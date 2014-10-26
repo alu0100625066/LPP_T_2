@@ -1,4 +1,3 @@
-module LPP_T_02
 	class Question
 		attr_accessor :qt, :r1, :wrong
 		
@@ -10,5 +9,14 @@ module LPP_T_02
 			@wrong = args[:wrong]
 			raise ArgumentError, "Se esperaba un array con las respuestas incorrectas" unless args[:wrong]
 		end
+		
+		def show
+			puts "#{@qt}"
+			opt = @r1 + @wrong
+			opt = opt.shuffle
+			for i in(1..4)
+				puts "#{i} - #{opt[i]}"
+			end
+		end
+		
 	end
-end
