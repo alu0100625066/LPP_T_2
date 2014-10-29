@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'LPP_T_02/Question/version'
+require 'Question/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "LPP_T_02-Question"
-  spec.version       = LPPT02::Question::VERSION
+  spec.name          = "Question"
+  spec.version       = Question::VERSION
   spec.authors       = ["Simón Fuertes"]
   spec.email         = ["simonfuesan@gmail.com"]
   spec.summary       = %q{TODO: Write a short summary. Required.}

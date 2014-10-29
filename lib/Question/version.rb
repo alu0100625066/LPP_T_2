@@ -1,5 +1,3 @@
-module LPPT02
-  module Question
-    VERSION = "0.0.1"
-  end
+class Question
+	VERSION = "1.0.0"
 end

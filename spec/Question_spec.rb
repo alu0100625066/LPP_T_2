@@ -1,4 +1,4 @@
-require 'LPP_T_02/Question'
+require 'Question'
 
 	class Question
 	
@@ -35,7 +35,7 @@ require 'LPP_T_02/Question'
 			
 			
 			it "Debe mostrarse por la pantalla la pregunta y las opciones" do
-				expect(@q).to respond_to :show
+				expect(@q).to respond_to :to_s
 			end
 			
 			

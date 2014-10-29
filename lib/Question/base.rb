@@ -10,13 +10,16 @@
 			raise ArgumentError, "Se esperaba un array con las respuestas incorrectas" unless args[:wrong]
 		end
 		
-		def show
-			puts "#{@qt}"
-			opt = @r1 + @wrong
+		def to_s
+			s = "#{@qt}\n"
+			opt = [@r1] + @wrong
 			opt = opt.shuffle
-			for i in(1..4)
-				puts "#{i} - #{opt[i]}"
+			i = 1
+			opt.each do |o|
+				s += "#{i}- #{o}\n"
+				i += 1
 			end
+			s
 		end
 		
 	end
