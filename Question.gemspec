@@ -6,8 +6,8 @@ require 'Question/version'
 Gem::Specification.new do |spec|
   spec.name          = "Question"
   spec.version       = Question::VERSION
-  spec.authors       = ["Simón Fuertes"]
-  spec.email         = ["simonfuesan@gmail.com"]
+  spec.authors       = ["Simón Fuertes", "Nuria Gonzalo"]
+  spec.email         = ["alu0100625066@edu.ull.es", "alu0100598155@edu.ull.es"]
   spec.summary       = %q{TODO: Write a short summary. Required.}
   spec.description   = %q{TODO: Write a longer description. Optional.}
   spec.homepage      = ""

@@ -1,26 +1,35 @@
+# Integrantes
+	
+	Grupo: LPP_T_02
+	Simón Fuertes Sánchez **(Coordinador)**
+	Nuria Gonzalo Soto
+_______________________________________________________________________
+
 # LPPT02::Question
 
-TODO: Write a gem description
+En esta práctica procedemos a crear nuestra primera gema, esta gema contiene una clase que genera preguntas de tipo test con 
+respuesta simple. Para ello le pasamos tres argumentos (primero, la pregunta, segundo, la respuesta correcta, y tercera, otras 
+opciones de respuesta como distractores).
 
-## Installation
+## Instalación
 
-Add this line to your application's Gemfile:
+Añade la siguiente línea a tu archivo Gemfile:
 
 ```ruby
 gem 'LPP_T_02-Question'
 ```
 
-And then execute:
+Luego ejecuta:
 
     $ bundle
 
-Or install it yourself as:
+O instalala por tí mismo con:
 
     $ gem install LPP_T_02-Question
 
-## Usage
+## Uso
 
-TODO: Write usage instructions here
+Puedes usar esta gema para crear tus examenes de tipo test de una forma mas rápida y cómoda.
 
 ## Contributing
 
