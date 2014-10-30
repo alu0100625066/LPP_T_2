@@ -1,4 +1,4 @@
-require 'Question'
+require 'Exam'
 
 	class Question
 	
