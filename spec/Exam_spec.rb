@@ -41,8 +41,10 @@ class Exam
 	describe Exam do
 		
 		before :each do
-			@p = Pregunta.new(:qt => '1+1=', :r1 => 2, :wrong => [3,5,7])
-			@n = Nodo.new (@p, nil)
+			@q = Question.new(:qt => '2+2=', :r1 => 4, :wrong => [3,5,7])
+			@n = Exam::Node.new (@q, nil)
+			@e = Exam.new(@q)
 		end
+		
 	end
 end
