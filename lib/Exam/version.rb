@@ -1,3 +1,3 @@
-class Question
-	VERSION = "1.0.0"
+class Exam
+	VERSION = "0.0.1"
 end

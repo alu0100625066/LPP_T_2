@@ -1,2 +1,2 @@
-require "Question/version"
-require "Question/base"
+require "Exam/version"
+require "Exam/base"
