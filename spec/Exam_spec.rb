@@ -62,6 +62,9 @@ class Exam
 				expect(@e).to respond_to :push
 				expect(@e.push(a))==a
 			end
+			it "#Debe existir una Lista con su cabeza" do
+				expect(@e).to respond_to :head
+			end
 		end
 	end
 end
