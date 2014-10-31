@@ -29,6 +29,18 @@ class Exam
 		end
 		input
 	end
+	
+	def to_s
+		aux = @head
+		s = ' '
+		i = 1
+		while (aux != nil) do
+			s += "#{i}) #{aux.value.to_s}\n"
+			aux = aux.next
+			i += 1
+		end
+		s
+	end
 
 end
 
