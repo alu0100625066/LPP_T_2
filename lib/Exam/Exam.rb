@@ -27,7 +27,8 @@ class Exam
 	     @tail.value
 	  end
 
-	end
+	
+	
 
 end
 
