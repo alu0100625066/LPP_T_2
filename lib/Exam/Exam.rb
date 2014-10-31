@@ -27,6 +27,26 @@ class Exam
 	     @tail.value
 	  end
 
+	def push_back(*questions)
+	    questions.each do |o|
+	      @tail.next = Nodo.new(o, nil)
+	      @tail = @tail.next
+	      @total += 1
+	    end
+	    questions
+	  end
+
+	   def to_s
+	    aux = @tail
+	    s = ''
+	    while (aux != nil) do
+	      s += "#{i}.-) #{aux.value.to_s}\n"      
+	      aux = aux.next
+	    end
+	    s
+	  end 
+
+	end
 	
 	
 
