@@ -19,36 +19,7 @@ class Exam
 		aux.next = nil
 		aux.value	    
 	end
-=begin
-	  def <<(0)    
-	     raise TypeError, "Esperando la pregunta para su inserción" unless o.instance_of? (Pregunta) 
-	     @tail.next = Nodo.new(o, nil)
-	     @tail = @tail.next    
-	     @tail.value
-	  end
 
-	def push_back(*questions)  #puede contener una cantidad variable de argumentos
-	    questions.each do |o|	#es un array, pero en ruby
-	      @tail.next = Nodo.new(o, nil)
-	      @tail = @tail.next
-	      @total += 1
-	    end
-	    questions
-	  end
-
-	   def to_s
-	    aux = @tail
-	    s = ''
-	    while (aux != nil) do
-	      s += "#{i}.-) #{aux.value.to_s}\n"      
-	      aux = aux.next
-	    end
-	    s
-	  end 
-
-	end
-=end	
-	
 
 end
 
