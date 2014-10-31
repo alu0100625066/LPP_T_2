@@ -65,6 +65,26 @@ class Exam
 			it "#Debe existir una Lista con su cabeza" do
 				expect(@e).to respond_to :head
 			end
+		#end
+		
+			it "Debe mostrarse correctamente" do
+      	text = "¿Cuál es la salida del siguiente código Ruby?\nclass Xyz\n\sdef pots\n\s\s@nice\n\send\nend\n\nxyz = Xyz.new\np xyz.pots"
+        exam = Exam.new(Question.new(:qt => text, :r1 =>"nil", :wrong => ["#<Xyz:0xa000208>","0","Ninguna de las anteriores"]))
+
+        text = "La siguiente definición de un hash en Ruby es válida:\nhash_raro = {\n\s[1, 2, 3] => Object.new(),\nHash.new => :toto\n}"
+        exam.push(Question.new(:qt => text, :r1 =>"Falso", :wrong => ["Cierto"]))
+
+        text = %Q{¿Cuál es la salida del siguiente código Ruby?\nclass Array\n\sdef say_hi\n\s\s"HEY!"\n\send\nend\n p [1, "bob"].say_hi}
+        exam.push(Question.new(:qt => text, :r1 =>"HEY!", :wrong => ["1","bob","Ninguna de las anteriores"]))
+   
+        text = "¿Cuál es el tipo del objeto en el siguiente código Ruby?\nclass Objeto\nend"
+        exam.push(Question.new(:qt => text, :r1 =>"Una instancia de la clase Class", :wrong => ["Una Constante", "Un Objeto", "Ninguna de las anteriores"]))
+   
+        text = "Es apropiado que una clase Tablero herede de una clase Juego"
+        exam.push(Question.new(:qt => text, :r1 =>"Falso", :wrong => ["Cierto"]))
+        
+        expect(exam.to_s).to match(/(\d+-(.|\s|\n)+)+/)
+      end
 		end
 	end
 end
