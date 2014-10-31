@@ -20,11 +20,14 @@ class Exam
 		aux.value	    
 	end
 	
-	def push (input)
-		aux = Node.new(input, nil)
-		@tail.next = aux
-		@tail = @tail.next
-		@tail.value
+	def push (*input)
+		input.each do |x| 
+			aux = Node.new(x, nil)
+			@tail.next = aux
+			@tail = @tail.next
+			@tail.value
+		end
+		input
 	end
 
 
