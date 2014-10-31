@@ -28,7 +28,7 @@ class Exam
 	  end
 
 	def push_back(*questions)  #puede contener una cantidad variable de argumentos
-	    questions.each do |o|
+	    questions.each do |o|	#es un array, pero en ruby
 	      @tail.next = Nodo.new(o, nil)
 	      @tail = @tail.next
 	      @total += 1
