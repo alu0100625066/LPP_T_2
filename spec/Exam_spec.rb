@@ -53,9 +53,10 @@ class Exam
 				expect(@e.pop)==@q
 			end
 			it "#Se puede insertar un elemento" do
-				expect(@e.push).to respond_to :push
-				a = [@q, @q, @q]
+				a = @q
+				expect(@e).to respond_to :push
 				expect(@e.push(a))==a
+			end
 		end
 	end
 end

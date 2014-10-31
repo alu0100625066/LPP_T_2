@@ -19,6 +19,13 @@ class Exam
 		aux.next = nil
 		aux.value	    
 	end
+	
+	def push (input)
+		aux = Node.new(input, nil)
+		@tail.next = aux
+		@tail = @tail.next
+		@tail.value
+	end
 
 
 end
