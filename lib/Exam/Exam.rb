@@ -27,7 +27,7 @@ class Exam
 	     @tail.value
 	  end
 
-	def push_back(*questions)
+	def push_back(*questions)  #puede contener una cantidad variable de argumentos
 	    questions.each do |o|
 	      @tail.next = Nodo.new(o, nil)
 	      @tail = @tail.next

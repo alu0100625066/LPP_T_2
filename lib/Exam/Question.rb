@@ -1,4 +1,4 @@
-	class Question
+class Question
 		attr_accessor :qt, :r1, :wrong
 		
 		def initialize (args)
