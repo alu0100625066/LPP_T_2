@@ -49,8 +49,13 @@ class Exam
 		
 		context "List" do
 			it "#Se extrae el primer elemento de la lista" do
+				expect(@e).to respond_to :pop
 				expect(@e.pop)==@q
 			end
+			it "#Se puede insertar un elemento" do
+				expect(@e.push).to respond_to :push
+				a = [@q, @q, @q]
+				expect(@e.push(a))==a
 		end
 	end
 end
