@@ -57,6 +57,11 @@ class Exam
 				expect(@e).to respond_to :push
 				expect(@e.push(a))==a
 			end
+			it "#Se pueden insertar varios elementos" do
+				a = [@q, @q, @q]
+				expect(@e).to respond_to :push
+				expect(@e.push(a))==a
+			end
 		end
 	end
 end
