@@ -30,7 +30,6 @@ class Exam
 		input
 	end
 
-
 end
 
 
