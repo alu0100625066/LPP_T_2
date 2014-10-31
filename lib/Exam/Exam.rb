@@ -3,9 +3,9 @@ require 'Question'
 
 class Exam
 
-	attr_accesor :head, :tail
+	attr_accessor :head, :tail
 
-	Node = struct.new :value, :next
+	Node = Struct.new :value, :next
 	
 	def initialize (o)
 		raise TypeError, "Se esperaba que se pasara una pregunta como parámetro" unless o.instance_of? (Question)
@@ -13,13 +13,13 @@ class Exam
 		@tail = @head
 	end
 
-	 def pop		# modulo para poder sacar la pregunta 
-	    hd = @head		#hd =head
-	    @head = @head.next
-	    hd.next = nil
-	    hd.value
-	  end
-
+	def pop		 
+		aux = @head
+		@head = @head.next
+		aux.next = nil
+		aux.value	    
+	end
+=begin
 	  def <<(0)    
 	     raise TypeError, "Esperando la pregunta para su inserción" unless o.instance_of? (Pregunta) 
 	     @tail.next = Nodo.new(o, nil)
@@ -47,7 +47,7 @@ class Exam
 	  end 
 
 	end
-	
+=end	
 	
 
 end

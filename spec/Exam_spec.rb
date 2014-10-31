@@ -41,11 +41,16 @@ class Exam
 		end
 		
 		context "Node" do
-			it ":Debe existir un Nodo de la lista con sus datos y su siguiente" do
+			it "#Debe existir un Nodo de la lista con sus datos y su siguiente" do
 				expect(@n.value)==@q
 				expect(@n.next)==nil
 			end
 		end
+		
+		context "List" do
+			it "#Se extrae el primer elemento de la lista"
+				expect(@e.pop)==@q
+			end
 		
 	end
 
