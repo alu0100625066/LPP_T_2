@@ -1,14 +1,16 @@
 # coding: utf-8
-require 'Question'
+require "Question"
 
 class Exam
 
-	attr_accesor :head, :tail
+	attr_accessor :head, :tail
 
-	Node = struct.new :value, :next
+	Node = Struct.new :value, :next
 	
 	def initialize (o)
+		raise TypeError, "Se esperaba que se pasara una pregunta como parámetro" unless o.instance_of? (Question)
 		@head = Node.new(o, nil)
 		@tail = @head
 	end
+	
 end
