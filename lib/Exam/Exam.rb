@@ -1,11 +1,11 @@
 # coding: utf-8
 require 'Question'
 
+Node = Struct.new :value, :next
+
 class Exam
 
 	attr_accessor :head, :tail
-
-	Node = Struct.new :value, :next
 	
 	def initialize (o)
 		raise TypeError, "Se esperaba que se pasara una pregunta como parámetro" unless o.instance_of? (Question)
@@ -16,7 +16,7 @@ class Exam
 	def pop		 
 		aux = @head
 		@head = @head.next
-		aux.next = nil
+		#aux.next = nil
 		aux.value	    
 	end
 	
