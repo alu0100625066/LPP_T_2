@@ -35,7 +35,7 @@ end
 class TrueOrFalse 
 	describe Exam do
 		before :each do
-			@q = TrueOrFalse.new(:qt => '¿Es verdad que 2+2=4 ?', :r1 =>TRUE)
+			@q = TrueOrFalse.new(:qt => '¿Es verdad que 2+2=4 ?', :r1 =>TRUE) #es lo mismo que :r1 => "Cierto", :wrong "Falso"
 		end
 		
 		context "TrueOrFalse" do
@@ -73,6 +73,7 @@ class Exam
 			it "#Debe existir un Nodo de la lista con sus datos y su siguiente" do
 				expect(@n.value)==@q
 				expect(@n.next)==nil
+				expect(@n.prev)==nil    
 			end
 		end
 		
