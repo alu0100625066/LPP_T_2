@@ -46,7 +46,7 @@ class Exam
 		s = ' '
 		i = 1
 		while (aux != nil) do
-			s += "#{i}) #{aux.value.to_s}\n"
+			s += "#{i}) #{aux.value}\n"
 			aux = aux.next
 			i += 1
 		end

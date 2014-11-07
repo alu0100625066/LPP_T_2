@@ -9,53 +9,64 @@ class Question
 		end
 						
 		context "Simple_Selection" do
+		
 			it ":Debe existir una pregunta" do
 				expect(@q.qt)== '1+1='
 			end
+			
 			it ":Deben existir opciones de respuesta" do
 				expect(@q.r1)== 2
 				expect(@q.wrong)== [3,5,7]
 			end
-				#expect(@q).to be_instance_of(LPP_T_02::Question)			
-				#Esta línea comprueba que el objeto q sea un objeto instanciado de nuestra clase Question 
+			
 			it ":Se debe invocar un método para obtener la pregunta" do
 				expect(@q).to respond_to :qt
 			end
+			
 			it ":Se debe invocar a un método para obtener las opciones de respuesta" do
 				expect(@q).to respond_to :r1
 				expect(@q).to respond_to :wrong
 			end		
+			
 			it ":Se deben mostrar por la pantalla la pregunta y las opciones" do
 				expect(@q).to respond_to :to_s
 			end
+			
 		end
 	end
 end
 
 class TrueOrFalse 
 	describe Exam do
+	
 		before :each do
-			@q = TrueOrFalse.new(:qt => '¿Es verdad que 2+2=4 ?', :r1 =>TRUE) #es lo mismo que :r1 => "Cierto", :wrong "Falso"
+			@q = TrueOrFalse.new(:qt => '¿Es verdad que 2+2=4 ?', :r1 => true) 
 		end
 		
 		context "TrueOrFalse" do
+		
 			it ":Debe existir una pregunta" do
 				expect(@q.qt)== '¿Es verdad que 2+2=4 ?'
 			end
+			
 			it "*Deben existir opciones de respuesta" do
 				expect(@q.r1)== "Cierto"
 				expect(@q.wrong)== "Falso"
 			end
+			
 			it "*Se debe invocar un método para obtener la pregunta" do
 				expect(@q).to respond_to :qt
 			end
+			
 			it "*Se debe invocar a un método para obtener las opciones de respuesta" do
 				expect(@q).to respond_to :r1
 				expect(@q).to respond_to :wrong
 			end		
+			
 			it "*Se deben mostrar por la pantalla la pregunta y las opciones" do
 				expect(@q).to respond_to :to_s
 			end
+			
 		end
 	end
 end
@@ -78,31 +89,34 @@ class Exam
 		end
 		
 		context "List" do
+		
 			it "#Se extrae el primer elemento de la lista" do
 				expect(@e).to respond_to :pop
 				expect(@e.pop)==@q
 			end
+			
 			it "#Se puede insertar un elemento" do
 				a = @q
 				expect(@e).to respond_to :push
 				expect(@e.push(a))==a
 			end
+			
 			it "#Se pueden insertar varios elementos" do
 				a = [@q, @q, @q]
 				expect(@e).to respond_to :push
 				expect(@e.push(a))==a
 			end
+			
 			it "#Debe existir una Lista con su cabeza" do
 				expect(@e).to respond_to :head
 			end
-		#end
 		
 			it "Debe mostrarse correctamente" do
       	text = "¿Cuál es la salida del siguiente código Ruby?\nclass Xyz\n\sdef pots\n\s\s@nice\n\send\nend\n\nxyz = Xyz.new\np xyz.pots"
         exam = Exam.new(Question.new(:qt => text, :r1 =>"nil", :wrong => ["#<Xyz:0xa000208>","0","Ninguna de las anteriores"]))
 
         text = "La siguiente definición de un hash en Ruby es válida:\nhash_raro = {\n\s[1, 2, 3] => Object.new(),\nHash.new => :toto\n}"
-        exam.push(Question.new(:qt => text, :r1 =>"Falso", :wrong => ["Cierto"]))
+        exam.push(TrueOrFalse.new(:qt => text, :r1 => false))
 
         text = %Q{¿Cuál es la salida del siguiente código Ruby?\nclass Array\n\sdef say_hi\n\s\s"HEY!"\n\send\nend\n p [1, "bob"].say_hi}
         exam.push(Question.new(:qt => text, :r1 =>"HEY!", :wrong => ["1","bob","Ninguna de las anteriores"]))
@@ -111,9 +125,10 @@ class Exam
         exam.push(Question.new(:qt => text, :r1 =>"Una instancia de la clase Class", :wrong => ["Una Constante", "Un Objeto", "Ninguna de las anteriores"]))
    
         text = "Es apropiado que una clase Tablero herede de una clase Juego"
-        exam.push(TrueOrFalse.new(:qt => text, :r1 =>"Falso", :wrong => ["Cierto"])) #
-
+        exam.push(TrueOrFalse.new(:qt => text, :r1 => false))
+        
         expect(exam.to_s).to match(/(\d+-(.|\s|\n)+)+/)
+        
       end
 		end
 	end
