@@ -45,6 +45,10 @@ class TrueOrFalse
 		
 		context "TrueOrFalse" do
 		
+			it ":Debe ser una instancia de la clase Question" do
+				expect(@q).instance_of? (Question)
+			end
+		
 			it ":Debe existir una pregunta" do
 				expect(@q.qt)== '¿Es verdad que 2+2=4 ?'
 			end
@@ -112,7 +116,7 @@ class Exam
 			end
 		
 			it "Debe mostrarse correctamente" do
-      	text = "¿Cuál es la salida del siguiente código Ruby?\nclass Xyz\n\sdef pots\n\s\s@nice\n\send\nend\n\nxyz = Xyz.new\np xyz.pots"
+      	text = "\n¿Cuál es la salida del siguiente código Ruby?\nclass Xyz\n\sdef pots\n\s\s@nice\n\send\nend\n\nxyz = Xyz.new\np xyz.pots"
         exam = Exam.new(Question.new(:qt => text, :r1 =>"nil", :wrong => ["#<Xyz:0xa000208>","0","Ninguna de las anteriores"]))
 
         text = "La siguiente definición de un hash en Ruby es válida:\nhash_raro = {\n\s[1, 2, 3] => Object.new(),\nHash.new => :toto\n}"
@@ -128,7 +132,6 @@ class Exam
         exam.push(TrueOrFalse.new(:qt => text, :r1 => false))
         
         expect(exam.to_s).to match(/(\d+-(.|\s|\n)+)+/)
-        
       end
 		end
 	end
