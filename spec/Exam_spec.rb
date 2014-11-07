@@ -37,7 +37,27 @@ class TrueOrFalse
 		before :each do
 			@q = TrueOrFalse.new(:qt => '¿Es verdad que 2+2=4 ?', :r1 =>TRUE)
 		end
-   end
+		
+		context "TrueOrFalse" do
+			it ":Debe existir una pregunta" do
+				expect(@q.qt)== '¿Es verdad que 2+2=4 ?'
+			end
+			it "*Deben existir opciones de respuesta" do
+				expect(@q.r1)== "Cierto"
+				expect(@q.wrong)== "Falso"
+			end
+			it "*Se debe invocar un método para obtener la pregunta" do
+				expect(@q).to respond_to :qt
+			end
+			it "*Se debe invocar a un método para obtener las opciones de respuesta" do
+				expect(@q).to respond_to :r1
+				expect(@q).to respond_to :wrong
+			end		
+			it "*Se deben mostrar por la pantalla la pregunta y las opciones" do
+				expect(@q).to respond_to :to_s
+			end
+		end
+	end
 end
 	
 class Exam
