@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'Exam'
 
 class Question
-	describe Question do
+	describe Exam do
 			
 		before :each do
 			@q = Question.new(:qt => '1+1=', :r1 => 2, :wrong => [3,5,7])
@@ -30,6 +30,14 @@ class Question
 			end
 		end
 	end
+end
+
+class TrueOrFalse 
+	describe Exam do
+		before :each do
+			@q = TrueOrFalse.new(:qt => '¿Es verdad que 2+2=4 ?', :r1 =>TRUE)
+		end
+   end
 end
 	
 class Exam
