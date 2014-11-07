@@ -14,17 +14,27 @@ class Exam
 		@tail = @head
 	end
 
-	def pop		 
+	def pop	# metodo a modificar para la lista doblemente enlazada	 
+		rise IndexError, "La lista se encuentra vacía" unless @head.is_a? (Node)		
 		aux = @head
-		@head = @head.next
-		#aux.next = nil
-		aux.value	    
+
+		if (@head == @tail)
+			@head = @tail = nil
+			aux.next = aux.prev = nil
+		else	 
+			@head = @head.next
+			@head.prev = nil		
+			aux.next = aux.prev = nil
+		end 
+
+		aux.value	 	    
 	end
 	
 	def push (*input)
 		input.each do |x| 
 			aux = Node.new(x, nil)
 			@tail.next = aux
+			aux.prev = @tail	#en la cola el nodo siguiente y el previo son el mismo
 			@tail = @tail.next
 			@tail.value
 		end

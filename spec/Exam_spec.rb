@@ -111,8 +111,8 @@ class Exam
         exam.push(Question.new(:qt => text, :r1 =>"Una instancia de la clase Class", :wrong => ["Una Constante", "Un Objeto", "Ninguna de las anteriores"]))
    
         text = "Es apropiado que una clase Tablero herede de una clase Juego"
-        exam.push(Question.new(:qt => text, :r1 =>"Falso", :wrong => ["Cierto"]))
-        
+        exam.push(TrueOrFalse.new(:qt => text, :r1 =>"Falso", :wrong => ["Cierto"])) #
+
         expect(exam.to_s).to match(/(\d+-(.|\s|\n)+)+/)
       end
 		end
