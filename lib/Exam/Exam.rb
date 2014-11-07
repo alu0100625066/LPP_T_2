@@ -2,7 +2,7 @@
 require 'Question'
 require 'TrueOrFalse'
 
-Node = Struct.new :value, :next
+Node = Struct.new :value, :next, :prev
 
 class Exam
 
@@ -10,7 +10,7 @@ class Exam
 	
 	def initialize (o)
 		raise TypeError, "Se esperaba que se pasara una pregunta como parámetro" unless o.instance_of? (Question)
-		@head = Node.new(o, nil)
+		@head = Node.new(o, nil,nil)
 		@tail = @head
 	end
 
@@ -32,7 +32,7 @@ class Exam
 	
 	def push (*input)
 		input.each do |x| 
-			aux = Node.new(x, nil)
+			aux = Node.new(x, nil, nil)
 			@tail.next = aux
 			aux.prev = @tail	#en la cola el nodo siguiente y el previo son el mismo
 			@tail = @tail.next
