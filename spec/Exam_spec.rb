@@ -33,6 +33,10 @@ class Question
 				expect(@q).to respond_to :to_s
 			end
 			
+			it ":Se debe poder invocar al operador <=> del módulo comparable" do
+				expect(@q<=>@q)== 1
+			end
+			
 		end
 	end
 end
