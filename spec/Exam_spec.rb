@@ -122,7 +122,7 @@ class Exam
 			
 =begin
 			it "#Debe existir el modulo Enumerable" do
-			expect(@e).to instance_of Enumerable
+			expect(@e).to is_a Enumerable
 			end
 		
 
