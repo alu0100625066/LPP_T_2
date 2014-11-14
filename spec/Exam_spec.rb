@@ -34,7 +34,11 @@ class Question
 			end
 			
 			it ":Se debe poder invocar al operador <=> del módulo comparable" do
-				expect(@q<=>@q)== 1
+				expect(@q<@q)== false
+			end
+			
+			it ":Debe existir el módulo Comparable" do
+				expect(@q).to be_kind_of (Comparable)
 			end
 			
 		end
