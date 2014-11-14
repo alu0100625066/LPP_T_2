@@ -8,7 +8,7 @@ class Exam
 
 	attr_accessor :head, :tail
 
-# include Enumerable 	## Instancias enumerables 
+	include Enumerable 	
 
 	def initialize (o)
 		raise TypeError, "Se esperaba que se pasara una pregunta como parámetro" unless o.instance_of? (Question)
@@ -16,7 +16,7 @@ class Exam
 		@tail = @head
 	end
 
-	def pop	# metodo a modificar para la lista doblemente enlazada	 
+	def pop
 		rise IndexError, "La lista se encuentra vacía" unless @head.is_a? (Node)		
 		aux = @head
 
@@ -36,7 +36,7 @@ class Exam
 		input.each do |x| 
 			aux = Node.new(x, nil, nil)
 			@tail.next = aux
-			aux.prev = @tail	#en la cola el nodo siguiente y el previo son el mismo
+			aux.prev = @tail	
 			@tail = @tail.next
 			@tail.value
 		end
@@ -54,15 +54,13 @@ class Exam
 		end
 		s
 	end
-=begin
-def each 		# metodo del <include Enumerable>
-aux =@head   		#devuelve el "enumerador" instanciado, 
-			#recorremos todos los nodos
-while (aux !=null) do
-yield aux.value 	#metodo que llama al bloque <value>
-aux = aux.next
-end
-=end
+
+	def each 		
+		aux =@head	
+		while (aux !=null) do
+			yield aux.value 
+		aux = aux.next
+	end
 
 end
 
