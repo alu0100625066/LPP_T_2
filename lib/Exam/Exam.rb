@@ -59,7 +59,8 @@ class Exam
 		aux =@head	
 		while (aux !=null) do
 			yield aux.value 
-		aux = aux.next
+			aux = aux.next
+		end
 	end
 
 end

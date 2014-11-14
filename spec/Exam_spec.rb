@@ -121,7 +121,7 @@ class Exam
 			end
 			
 			it "#Debe existir el modulo Enumerable" do
-			expect(@e).to be_kind_of? Enumerable
+				expect(@e).to be_kind_of (Enumerable)
 			end
 			
 			it "Debe mostrarse correctamente" do
@@ -141,6 +141,7 @@ class Exam
         exam.push(TrueOrFalse.new(:qt => text, :r1 => false))
         
         expect(exam.to_s).to match(/(\d+-(.|\s|\n)+)+/)
+        
       end
 		end
 	end
