@@ -20,6 +20,19 @@ class Question
 				expect(@q.wrong)== [3,5,7]
 			end
 			
+			it ":Debe existir un grado de dificultad por defecto" do
+				expect(@q.difficulty)== 1
+			end
+			
+			it ":Debe permitir dar valor a la dificultad" do
+				a = Question.new(:qt => '1+1=', :r1 => 2, :wrong => [3,5,7], :difficulty => 3)
+				expect(a.difficulty).to eq(3)			
+			end
+			
+			it ":Se debe invocar un método para obtener la dificultad" do
+				expect(@q).to respond_to :difficulty
+			end
+			
 			it ":Se debe invocar un método para obtener la pregunta" do
 				expect(@q).to respond_to :qt
 			end
@@ -33,8 +46,8 @@ class Question
 				expect(@q).to respond_to :to_s
 			end
 			
-			it ":Se debe poder invocar al operador <=> del módulo comparable" do
-				expect(@q<@q)== false
+			it ":Se debe poder comparar con otra pregunta" do
+				expect(@q<@q).to eq(false)
 			end
 			
 			it ":Debe existir el módulo Comparable" do
@@ -54,11 +67,11 @@ class TrueOrFalse
 		
 		context "TrueOrFalse" do
 		
-			it ":Debe ser una instancia de la clase Question" do
+			it "*Debe ser una instancia de la clase Question" do
 				expect(@q).instance_of? (Question)
 			end
 		
-			it ":Debe existir una pregunta" do
+			it "*Debe existir una pregunta" do
 				expect(@q.qt)== '¿Es verdad que 2+2=4 ?'
 			end
 			
@@ -66,6 +79,20 @@ class TrueOrFalse
 				expect(@q.r1)== "Cierto"
 				expect(@q.wrong)== "Falso"
 			end
+			
+			it "*Debe existir un grado de dificultad por defecto" do
+				expect(@q.difficulty)== 1
+			end
+			
+			it "*Debe permitir dar valor a la dificultad" do
+				a = TrueOrFalse.new(:qt => '1+1=', :r1 => 2, :wrong => [3,5,7], :difficulty => 3)
+				expect(a.difficulty).to eq(3)			
+			end
+			
+			it "*Se debe invocar un método para obtener la dificultad" do
+				expect(@q).to respond_to :difficulty
+			end
+			
 			
 			it "*Se debe invocar un método para obtener la pregunta" do
 				expect(@q).to respond_to :qt
@@ -78,6 +105,14 @@ class TrueOrFalse
 			
 			it "*Se deben mostrar por la pantalla la pregunta y las opciones" do
 				expect(@q).to respond_to :to_s
+			end
+			
+			it "*Debe existir el módulo Comparable" do
+				expect(@q).to be_kind_of (Comparable)
+			end
+			
+			it "*Se debe poder comparar con otra pregunta" do
+				expect(@q<@q)== false
 			end
 			
 		end
@@ -124,11 +159,7 @@ class Exam
 				expect(@e).to respond_to :head
 			end
 			
-			it "#Debe existir el modulo Enumerable" do
-				expect(@e).to be_kind_of (Enumerable)
-			end
-			
-			it "Debe mostrarse correctamente" do
+			it "#Debe mostrarse correctamente" do
       	text = "\n¿Cuál es la salida del siguiente código Ruby?\nclass Xyz\n\sdef pots\n\s\s@nice\n\send\nend\n\nxyz = Xyz.new\np xyz.pots"
         exam = Exam.new(Question.new(:qt => text, :r1 =>"nil", :wrong => ["#<Xyz:0xa000208>","0","Ninguna de las anteriores"]))
 
@@ -145,8 +176,18 @@ class Exam
         exam.push(TrueOrFalse.new(:qt => text, :r1 => false))
         
         expect(exam.to_s).to match(/(\d+-(.|\s|\n)+)+/)
-        
-      end
+			end
+       
+			it "#Debe existir el modulo Enumerable" do
+				expect(@e).to be_kind_of (Enumerable)
+			end
+
+			it "#Debe poder ordenarse" do
+        a = TrueOrFalse.new(:qt => "Es apropiado que una clase Tablero herede de una clase Juego", :r1 => false, :difficulty => 0)
+        @e.push(a)
+				expect(@e.sort).to eq([a, @q])
+			end
+       
 		end
 	end
 end

@@ -57,7 +57,7 @@ class Exam
 
 	def each 		
 		aux =@head	
-		while (aux !=null) do
+		while (aux != nil) do
 			yield aux.value 
 			aux = aux.next
 		end
