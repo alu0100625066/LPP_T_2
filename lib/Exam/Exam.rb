@@ -8,7 +8,7 @@ class Exam
 
 	attr_accessor :head, :tail
 
- include Enumerable 	## Instancias enumerables 
+# include Enumerable 	## Instancias enumerables 
 
 	def initialize (o)
 		raise TypeError, "Se esperaba que se pasara una pregunta como parámetro" unless o.instance_of? (Question)
@@ -54,7 +54,7 @@ class Exam
 		end
 		s
 	end
-
+=begin
 def each 		# metodo del <include Enumerable>
 aux =@head   		#devuelve el "enumerador" instanciado, 
 			#recorremos todos los nodos
@@ -62,7 +62,7 @@ while (aux !=null) do
 yield aux.value 	#metodo que llama al bloque <value>
 aux = aux.next
 end
-
+=end
 
 end
 

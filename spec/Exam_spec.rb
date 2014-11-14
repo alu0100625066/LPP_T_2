@@ -119,7 +119,14 @@ class Exam
 			it "#Debe existir una Lista con su cabeza" do
 				expect(@e).to respond_to :head
 			end
+			
+=begin
+			it "#Debe existir el modulo Enumerable" do
+			expect(@e).to instance_of Enumerable
+			end
 		
+
+=end		
 			it "Debe mostrarse correctamente" do
       	text = "\n¿Cuál es la salida del siguiente código Ruby?\nclass Xyz\n\sdef pots\n\s\s@nice\n\send\nend\n\nxyz = Xyz.new\np xyz.pots"
         exam = Exam.new(Question.new(:qt => text, :r1 =>"nil", :wrong => ["#<Xyz:0xa000208>","0","Ninguna de las anteriores"]))
