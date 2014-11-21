@@ -5,14 +5,20 @@
 	Nuria Gonzalo Soto
 _______________________________________________________________________
 
-# LPPT02::Exam
+# LPP_T_02
 
-Prct5(2ªvesrión) -> En esta práctica procedemos a crear nuestra primera gema, esta gema contiene una clase que genera preguntas de tipo test con respuesta simple. Para ello le pasamos tres argumentos (primero, la pregunta, segundo, la respuesta correcta, y tercera, otras 
+(Historial)
+
+| Prct5 |-> En esta práctica procedemos a crear nuestra primera gema, esta gema contiene una clase que genera preguntas de tipo test con respuesta simple. Para ello le pasamos tres argumentos (primero, la pregunta, segundo, la respuesta correcta, y tercera, otras 
 opciones de respuesta como distractores). 
 
-Prct6-> A partir de la gema creada en la anterior práctica, deberemos representar preguntas simples de exámenes con pruebas RSpec para seguir el modelo TDD. Para ello tenemos que representar y gestionar listas enlazadas (Linked List), ya que en Ruby no existe un objeto 'List' se deberá hacer mediante 'Arrays'.
+| Prct6 |-> A partir de la gema creada en la anterior práctica, deberemos representar preguntas simples de exámenes con pruebas RSpec para seguir el modelo TDD. Para ello tenemos que representar y gestionar listas enlazadas (Linked List), ya que en Ruby no existe un objeto 'List' se deberá hacer mediante 'Arrays'.
 
-Pract7 -> para esta práctica, partiendo de la anterior, se deberá crear una jerarquía de clases sobre la pregunta simple. Se deberá representar y gestionar listas enlazadas de forma que se puede recorrer en ambos sentidos. 
+| Prct7 |-> para esta práctica, partiendo de la anterior, se deberá crear una jerarquía de clases sobre la pregunta simple. Se deberá representar y gestionar listas enlazadas de forma que se puede recorrer en ambos sentidos. 
+
+| Prct8 |-> para esta práctica, partiendo de la anterior, se modificarán las instancias un caso para "enumerables" y otro para "Comparables". Se utilizará la herramienta "Travis" para la integración continua. 
+
+* | Prct9 |-> para esta práctica, partiendo de la anterior, se deberá implementar dos clases nuevas, "class examen" para representar un examen y "class interfaz de usuario" para la visualización de éste. También de utilizará la herramienta "Coverall" . 
 
 
 ## Instalación
