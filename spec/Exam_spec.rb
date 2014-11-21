@@ -197,7 +197,37 @@ class Exam
         @l.push(a)
 				expect(@l.sort).to eq([a, @q])
 			end
+			
+			it "#Debe conocer el nodo de mayor dificultad" do
+				p = TrueOrFalse.new(:qt => "¿1+2=3?", :r1 => true, :difficulty => 2)
+				@l.push(p)
+				expect(@l.max).to eq(p)
+			end
+			
+			it "#Debe conocer el nodo de menor dificultad" do
+				p = TrueOrFalse.new(:qt => "¿1+2=3?", :r1 => true, :difficulty => 2)
+				@l.push(p)
+				expect(@l.min).to eq(@q)
+			end
+			
+			it "#Debe poder usarse all?" do
+				p = TrueOrFalse.new(:qt => "¿1+2=3?", :r1 => true, :difficulty => 2)
+				@l.push(p)
+				expect(@l.all?{|x| x.difficulty >= 1}).to eq(true)  
+			end
        
+      it "#Debe poder usar any?" do
+      	p = TrueOrFalse.new(:qt => "¿1+2=3?", :r1 => true, :difficulty => 2)
+      	@l.push(p)
+      	expect(@l.any?{|x| x.difficulty <= 0}).to eq(false)
+      end
+      
+      it "#Debe poder contar las repeticiones de un mismo nodo" do
+      	p = TrueOrFalse.new(:qt => "¿1+2=3?", :r1 => true, :difficulty => 2)
+      	@l.push(p)
+      	expect(@l.count(p))==1
+      end
+      
 		end
 	end
 end
