@@ -7,6 +7,10 @@ class Question
 			@difficulty <=> other.difficulty
 		end
 		
+		def ==(other)
+			@qt.eql?other.qt
+		end
+		
 		def initialize (args)
 			@qt = args[:qt]
 			raise ArgumentError, "Se esperaba una pregunta" unless args.key?(:qt)

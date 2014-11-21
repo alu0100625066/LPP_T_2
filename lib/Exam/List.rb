@@ -4,7 +4,7 @@ require 'TrueOrFalse'
 
 Node = Struct.new :value, :next, :prev
 
-class Exam
+class List
 
 	attr_accessor :head, :tail
 

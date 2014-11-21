@@ -46,8 +46,13 @@ class Question
 				expect(@q).to respond_to :to_s
 			end
 			
-			it ":Se debe poder comparar con otra pregunta" do
-				expect(@q<@q).to eq(false)
+			it ":Se pueden comparar las preguntas" do
+				p = Question.new(:qt => "1+2=", :r1 => 3, :wrong => [1, 2, 4], :difficulty => 2)
+				expect(@q<p).to eq(true)
+				expect(@q>p).to eq(false)
+				expect(@q<=p).to eq(true)
+				expect(@q>=p).to eq(false)
+				expect(@q==p).to eq(false)
 			end
 			
 			it ":Debe existir el módulo Comparable" do
@@ -111,8 +116,13 @@ class TrueOrFalse
 				expect(@q).to be_kind_of (Comparable)
 			end
 			
-			it "*Se debe poder comparar con otra pregunta" do
-				expect(@q<@q)== false
+			it "*Se pueden comparar las preguntas" do
+				p = TrueOrFalse.new(:qt => "¿1+2=3?", :r1 => true, :difficulty => 2)
+				expect(@q<p).to eq(true)
+				expect(@q>p).to eq(false)
+				expect(@q<=p).to eq(true)
+				expect(@q>=p).to eq(false)
+				expect(@q==p).to eq(false)
 			end
 			
 		end
@@ -125,7 +135,7 @@ class Exam
 		before :each do
 			@q = Question.new(:qt => '2+2=', :r1 => 4, :wrong => [2,5,8])
 			@n = Node.new (@q)
-			@e = Exam.new(@q)
+			@l = List.new(@q)
 		end
 		
 		context "Node" do
@@ -139,53 +149,53 @@ class Exam
 		context "List" do
 		
 			it "#Se extrae el primer elemento de la lista" do
-				expect(@e).to respond_to :pop
-				expect(@e.pop)==@q
+				expect(@l).to respond_to :pop
+				expect(@l.pop)==@q
 			end
 			
 			it "#Se puede insertar un elemento" do
 				a = @q
-				expect(@e).to respond_to :push
-				expect(@e.push(a))==a
+				expect(@l).to respond_to :push
+				expect(@l.push(a))==a
 			end
 			
 			it "#Se pueden insertar varios elementos" do
 				a = [@q, @q, @q]
-				expect(@e).to respond_to :push
-				expect(@e.push(a))==a
+				expect(@l).to respond_to :push
+				expect(@l.push(a))==a
 			end
 			
 			it "#Debe existir una Lista con su cabeza" do
-				expect(@e).to respond_to :head
+				expect(@l).to respond_to :head
 			end
 			
 			it "#Debe mostrarse correctamente" do
       	text = "\n¿Cuál es la salida del siguiente código Ruby?\nclass Xyz\n\sdef pots\n\s\s@nice\n\send\nend\n\nxyz = Xyz.new\np xyz.pots"
-        exam = Exam.new(Question.new(:qt => text, :r1 =>"nil", :wrong => ["#<Xyz:0xa000208>","0","Ninguna de las anteriores"]))
+        list = List.new(Question.new(:qt => text, :r1 =>"nil", :wrong => ["#<Xyz:0xa000208>","0","Ninguna de las anteriores"]))
 
         text = "La siguiente definición de un hash en Ruby es válida:\nhash_raro = {\n\s[1, 2, 3] => Object.new(),\nHash.new => :toto\n}"
-        exam.push(TrueOrFalse.new(:qt => text, :r1 => false))
+        list.push(TrueOrFalse.new(:qt => text, :r1 => false))
 
         text = %Q{¿Cuál es la salida del siguiente código Ruby?\nclass Array\n\sdef say_hi\n\s\s"HEY!"\n\send\nend\n p [1, "bob"].say_hi}
-        exam.push(Question.new(:qt => text, :r1 =>"HEY!", :wrong => ["1","bob","Ninguna de las anteriores"]))
+        list.push(Question.new(:qt => text, :r1 =>"HEY!", :wrong => ["1","bob","Ninguna de las anteriores"]))
    
         text = "¿Cuál es el tipo del objeto en el siguiente código Ruby?\nclass Objeto\nend"
-        exam.push(Question.new(:qt => text, :r1 =>"Una instancia de la clase Class", :wrong => ["Una Constante", "Un Objeto", "Ninguna de las anteriores"]))
+        list.push(Question.new(:qt => text, :r1 =>"Una instancia de la clase Class", :wrong => ["Una Constante", "Un Objeto", "Ninguna de las anteriores"]))
    
         text = "Es apropiado que una clase Tablero herede de una clase Juego"
-        exam.push(TrueOrFalse.new(:qt => text, :r1 => false))
+        list.push(TrueOrFalse.new(:qt => text, :r1 => false))
         
-        expect(exam.to_s).to match(/(\d+-(.|\s|\n)+)+/)
+        expect(list.to_s).to match(/(\d+-(.|\s|\n)+)+/)
 			end
        
 			it "#Debe existir el modulo Enumerable" do
-				expect(@e).to be_kind_of (Enumerable)
+				expect(@l).to be_kind_of (Enumerable)
 			end
 
 			it "#Debe poder ordenarse" do
         a = TrueOrFalse.new(:qt => "Es apropiado que una clase Tablero herede de una clase Juego", :r1 => false, :difficulty => 0)
-        @e.push(a)
-				expect(@e.sort).to eq([a, @q])
+        @l.push(a)
+				expect(@l.sort).to eq([a, @q])
 			end
        
 		end
