@@ -243,7 +243,7 @@ class Exam
       	end
       	
       	it "-Debe mostrarse correctamente el examen" do
-      		expect(@e.to_s).to match(/(\d+\.)\)(.|\s|\n)+)+/)
+      		expect(@e.to_s).to match(/(\d+-(.|\s|\n)+)+/)
       	end
       	
       	it "-Se puede insertar uno o varios elementos" do
