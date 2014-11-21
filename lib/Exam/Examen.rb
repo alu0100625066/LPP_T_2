@@ -1,21 +1,15 @@
 # coding: utf-8
-require "Exam"
+require 'List'
 
 class Examen
 	attr_accessor :exam
 
 	def initialize(o)
-	@exam = Exam.new(o)
+	@exam = List.new(o)
 	end
 
 	def to_s
-		s="#{@list}"
-		s
-	end
-
-	def <<(o)
-	@list << o
-
+		"#{@exam}"
 	end
 
 	def push(*input)
