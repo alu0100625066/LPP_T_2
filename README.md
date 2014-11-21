@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/crguezl/sinatra-capybara-selenium.svg?branch=master)](https://travis-ci.org/crguezl/sinatra-capybara-selenium)
+[![Coverage Status](https://coveralls.io/repos/crguezl/sample-ruby-project/badge.png?branch=master)](https://coveralls.io/r/crguezl/sample-ruby-project?branch=master)
+
+
 # Integrantes
 	
 	Grupo: LPP_T_02
