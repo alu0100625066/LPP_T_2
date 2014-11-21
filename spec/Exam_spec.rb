@@ -1,6 +1,6 @@
 # coding: utf-8
 require 'spec_helper'
-require 'Exam'
+require 'Examen'
 
 class Question
 	describe Exam do
@@ -226,6 +226,30 @@ class Exam
       	p = TrueOrFalse.new(:qt => "¿1+2=3?", :r1 => true, :difficulty => 2)
       	@l.push(p)
       	expect(@l.count(p))==1
+      end
+      
+      context "Exam" do
+      	
+      	before :each do
+      	 @e = Examen.new(@q)
+      	end
+      	
+      	it "-Debe tener un atributo lista" do
+      		expect(@e).to respond_to :exam
+      	end
+      	
+      	it "-Debe mostrar por pantalla el examen" do
+      		expect(@e).to respond_to :to_s
+      	end
+      	
+      	it "-Debe mostrarse correctamente el examen" do
+      		expect(@e.to_s).to match(/(\d+\.)\)(.|\s|\n)+)+/)
+      	end
+      	
+      	it "-Se puede insertar uno o varios elementos" do
+      		expect(@e).to respond_to :push
+      	end
+      
       end
       
 		end
