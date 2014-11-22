@@ -1,4 +1,4 @@
-require 'Question'
+require 'question'
 
 class TrueOrFalse < Question
 	def initialize (args)

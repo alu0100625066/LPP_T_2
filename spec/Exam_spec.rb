@@ -1,6 +1,6 @@
 # coding: utf-8
 require 'spec_helper'
-require 'Examen'
+require 'examen'
 
 class Question
 	describe Exam do
