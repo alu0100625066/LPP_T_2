@@ -1,3 +1,5 @@
+require 'Question'
+
 class TrueOrFalse < Question
 	def initialize (args)
 		raise ArgumentError,"Se esperaba una pregunta" unless args.key?(:qt)
