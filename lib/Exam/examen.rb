@@ -1,5 +1,5 @@
 # coding: utf-8
-require 'List'
+require 'list'
 
 class Examen
 	attr_accessor :exam

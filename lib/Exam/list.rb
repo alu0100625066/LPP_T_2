@@ -1,6 +1,6 @@
 # coding: utf-8
-require 'Question'
-require 'TrueOrFalse'
+require 'question'
+require 'trueorfalse'
 
 Node = Struct.new :value, :next, :prev
 

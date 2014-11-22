@@ -1,3 +1,3 @@
-require 'Question'
-require 'TrueOrFalse'
-require 'Examen'
+require 'question'
+require 'trueorfalse'
+require 'examen'
