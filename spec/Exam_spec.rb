@@ -129,7 +129,7 @@ class TrueOrFalse
 	end
 end
 	
-class Exam
+class List
 	describe Exam do
 		
 		before :each do
@@ -227,31 +227,29 @@ class Exam
       	@l.push(p)
       	expect(@l.count(p))==1
       end
-      
-      context "Exam" do
+		end
+     
+		context "Exam" do
+			before :each do
+				@e = Examen.new(@q)
+     	end
       	
-      	before :each do
-      	 @e = Examen.new(@q)
-      	end
+     	it "#Debe tener un atributo lista" do
+     		expect(@e).to respond_to :exam
+     	end
+     	
+     	it "#Debe mostrar por pantalla el examen" do
+     		expect(@e).to respond_to :to_s
+     	end
+     	
+     	it "#Debe mostrarse correctamente el examen" do
+     		expect(@e.to_s).to match(/(\d+-(.|\s|\n)+)+/)
+     	end
       	
-      	it "-Debe tener un atributo lista" do
-      		expect(@e).to respond_to :exam
-      	end
-      	
-      	it "-Debe mostrar por pantalla el examen" do
-      		expect(@e).to respond_to :to_s
-      	end
-      	
-      	it "-Debe mostrarse correctamente el examen" do
-      		expect(@e.to_s).to match(/(\d+-(.|\s|\n)+)+/)
-      	end
-      	
-      	it "-Se puede insertar uno o varios elementos" do
-      		expect(@e).to respond_to :push
-      	end
-      
-      end
-      
+     	it "#Se puede insertar uno o varios elementos" do
+     		expect(@e).to respond_to :push
+     	end
+     	
 		end
 	end
 end
