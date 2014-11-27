@@ -1,6 +1,6 @@
 # coding: utf-8
 require 'spec_helper'
-require 'examen'
+require 'examui'
 
 class Question
 	describe Exam do
@@ -228,28 +228,75 @@ class List
       	expect(@l.count(p))==1
       end
 		end
-     
-		context "Exam" do
-			before :each do
-				@e = Examen.new(@q)
-     	end
-      	
-     	it "#Debe tener un atributo lista" do
+  end
+end
+
+class Exam
+	describe Exam do
+		
+		before :each do
+			@q = Question.new(:qt => '2+2=', :r1 => 4, :wrong => [2,5,8])
+			@e = Exam.new(@q)
+    end
+
+		context "Exam" do		
+     	
+     	it "-Debe tener un atributo lista" do
      		expect(@e).to respond_to :exam
      	end
      	
-     	it "#Debe mostrar por pantalla el examen" do
+     	it "-Debe mostrar por pantalla el examen" do
      		expect(@e).to respond_to :to_s
      	end
      	
-     	it "#Debe mostrarse correctamente el examen" do
+     	it "-Debe mostrarse correctamente el examen" do
      		expect(@e.to_s).to match(/(\d+-(.|\s|\n)+)+/)
      	end
       	
-     	it "#Se puede insertar uno o varios elementos" do
+     	it "-Se puede insertar uno o varios elementos" do
      		expect(@e).to respond_to :push
      	end
      	
+     	it "-Debe tener un método que gestione las respuesta correctas" do
+     		expect(@e).to respond_to :right
+     	end	
+     		
+     	it "-Debe tener un método que devuelva un array con las respuestas correctas" do
+     		@e.push(@q)
+     		x = @e.right
+     		expect(x[0])==@q.r1
+     		expect(x[1])==@q.r1
+     	end     	
 		end
+	end
+end
+
+class Examui
+	describe Exam do
+	
+		before :each do
+			@q = Question.new(:qt => '2+2=', :r1 => 4, :wrong => [2,5,8])
+			@u = Examui.new(@q)
+		end
+	
+		context "Exam" do
+		
+			it "~Debe tener un atributo del tipo examen" do
+				expect(@u).to respond_to :examui
+			end
+			
+			it "~Debe tener un método para comprobar si las respuestas dadas por el usuario son correctas" do
+				expect(@u).to respond_to :compare
+			end
+			
+			it "~El método debe poder comparar una o más respuetas" do
+				@u.examui.push(@q)
+				res = [4, 4]
+				comp = @u.compare(res)
+				expect(comp[0])==true
+				expect(comp[1])==true
+			end
+		
+		end		
 	end
 end
