@@ -1,8 +1,17 @@
 require "bundler/gem_tasks"
 require 'rspec/core/rake_task'
-RSpec::Core::RakeTask.new
 
+require 'rdoc/task'
+
+RSpec::Core::RakeTask.new
 task :default => :spec
+
+
+Rake::RdocTask.new(:rdoc_dev) do (rd)
+	rd.main = "README.rdoc"
+	rd.rdoc_files.include("README.rdoc", "lib/**/*.rb")
+    	rd.options << "--all"
+end
 
 desc "Ejecutar pruebas spec y volcar el resultado en un fichero html"
 task :html do
