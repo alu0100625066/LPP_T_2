@@ -2,20 +2,26 @@
 require 'question'
 require 'trueorfalse'
 
+#nodos
 Node = Struct.new :value, :next, :prev
 
+
+#Clase para las listas doblemente enlazadas
 class List
 
 	attr_accessor :head, :tail
 
 	include Enumerable 	
 
+#Inicializacion de una instancia de la clase Lista a partir de una Question pregunta).
 	def initialize (o)
 		raise TypeError, "Se esperaba que se pasara una pregunta como parámetro" unless o.instance_of? (Question)
 		@head = Node.new(o, nil,nil)
 		@tail = @head
 	end
 
+
+#Metodo para extraer "por la cabeza" de la lista acutalmente.
 	def pop
 		raise IndexError, "La lista se encuentra vacía" unless @head.is_a? (Node)		
 		aux = @head
@@ -30,7 +36,9 @@ class List
 		end 
 		aux.value	 	    
 	end
-	
+
+
+#Metodo	para instertar varias preguntas sucesivamente
 	def push (*input)
 		input.each do |x| 
 			aux = Node.new(x, nil, nil)
@@ -41,7 +49,9 @@ class List
 		end
 		input
 	end
-	
+
+
+#Metodo to_s
 	def to_s
 		aux = @head
 		s = ' '
@@ -54,6 +64,9 @@ class List
 		s
 	end
 
+
+
+#Metodo para le manejo de metodos del modulo Enumerable
 	def each 		
 		aux =@head	
 		while (aux != nil) do
@@ -62,6 +75,9 @@ class List
 		end
 	end
 	
+
+
+#Metodo que devuelve la lista actual invertida.
 	def inverter (&block)
 		block = ->(x) {true} if !block_given?
 		list = invert(@head, &block)
@@ -69,7 +85,9 @@ class List
 		return nil  if list.count == 0
 		list
 	end
-	
+
+
+#Metodo auxiliar que se utiliza para invertir la lista (recursividad).	
 	def invert(actual, &block)
 		return List.new(Question.new(:qt => "dummy", :r1 => "dummy", :wrong => ["dummy"])) if (actual == nil)
 		list = invert(actual.next, &block)
