@@ -17,7 +17,7 @@ class List
 	end
 
 	def pop
-		rise IndexError, "La lista se encuentra vacía" unless @head.is_a? (Node)		
+		raise IndexError, "La lista se encuentra vacía" unless @head.is_a? (Node)		
 		aux = @head
 
 		if (@head == @tail)
@@ -28,7 +28,6 @@ class List
 			@head.prev = nil		
 			aux.next = aux.prev = nil
 		end 
-
 		aux.value	 	    
 	end
 	
@@ -62,6 +61,23 @@ class List
 			aux = aux.next
 		end
 	end
+	
+	def inverter (&block)
+		block = ->(x) {true} if !block_given?
+		list = invert(@head, &block)
+		list.pop
+		return nil  if list.count == 0
+		list
+	end
+	
+	def invert(actual, &block)
+		return List.new(Question.new(:qt => "dummy", :r1 => "dummy", :wrong => ["dummy"])) if (actual == nil)
+		list = invert(actual.next, &block)
+		list.push(actual.value) if block[actual.value]
+		list
+	end
+	
+	private :invert
 
 end
 

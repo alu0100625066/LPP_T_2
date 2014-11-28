@@ -227,6 +227,25 @@ class List
       	@l.push(p)
       	expect(@l.count(p))==1
       end
+      
+      it "#Debe tener un método inverter" do
+      	expect(@l).to respond_to :inverter
+      end
+      
+      it "#Debe tener un método invert que sea privado" do
+      	expect(@l.private_methods.include? :invert).to eq(true)
+      end
+      
+   		it "#Debe ser capaz de invertir la lista" do
+   			a = Question.new(:qt => '1+2=', :r1 => 3, :wrong => [2,5,8], :difficulty => 2)
+   			@l.push(a)
+   			expect(@l.inverter.pop).to eq(a)
+   			expect(@l.inverter {false}).to eq(nil)
+   			expect((@l.inverter {|p| p.difficulty == 2}).pop).to eq(a)
+   			listaAux = @l.inverter {|p| p.difficulty == 2}
+   			listaAux.pop
+   			expect(listaAux.head == nil).to eq(true)
+   		end
 		end
   end
 end
