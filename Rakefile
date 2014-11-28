@@ -1,14 +1,13 @@
 require "bundler/gem_tasks"
+require "rdoc/task"
 require 'rspec/core/rake_task'
-
-require 'rdoc/task'
 
 RSpec::Core::RakeTask.new
 task :default => :spec
 
 
 Rake::RDocTask.new(:rdoc_dev) do |rd|
-	rd.main = "README.rdoc"
+	rd.main = "README.doc"
 	rd.rdoc_files.include("README.rdoc", "lib/**/*.rb")
     	rd.options << "--all"
 end
