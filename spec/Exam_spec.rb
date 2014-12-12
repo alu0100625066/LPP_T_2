@@ -1,6 +1,6 @@
 # coding: utf-8
 require 'spec_helper'
-require 'examui'
+require 'Exam'
 
 class Question
 	describe Exam do
@@ -376,11 +376,11 @@ class Quiz
 			end 
 			
 			it "~El método right debe devolver un símbolo" do
-				expect(@q.right.instace_of?Symbol).to eq(true) 
+				expect(@q.right.instance_of?Symbol).to eq(true) 
 			end			
 			
 			it "~El método wrong debe devolver un array" do
-				expect(@q.wrong.instace_of?Array).to eq(true) 
+				expect(@q.wrong.instance_of?Array).to eq(true) 
 			end			
 			
 			it "~El método question debe leer preguntas" do

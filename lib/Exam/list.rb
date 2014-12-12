@@ -41,11 +41,15 @@ class List
 #Metodo	para instertar varias preguntas sucesivamente
 	def push (*input)
 		input.each do |x| 
-			aux = Node.new(x, nil, nil)
-			@tail.next = aux
-			aux.prev = @tail	
-			@tail = @tail.next
-			@tail.value
+			if @head == nil
+				@head = @tail = Node.new(x, nil, nil)	
+			else 
+				aux = Node.new(x, nil, nil)
+				@tail.next = aux
+				aux.prev = @tail	
+				@tail = @tail.next
+				@tail.value
+			end
 		end
 		input
 	end
