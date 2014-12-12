@@ -33,7 +33,7 @@ class Quiz
 	end
 	
 	def run
-		puts "#{@name}"
+		puts "#{@name}\n\n"
 		punt = 0
 		right = @exam.right
 		userans = Array.new(right.count, false)
