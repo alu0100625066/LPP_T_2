@@ -319,3 +319,74 @@ class Examui
 		end		
 	end
 end
+
+
+class Quiz
+	describe Quiz do
+	
+		before :each do
+			@q = Quiz.new("Cuestionario LPP 05/12/2014") do
+							question "¿Cuantos argumentos de tipo bloque puede recibir un metodo?",
+							right => "1",
+							wrong => "2",
+							wrong => "muchos",
+							wrong => "los que defina el usuario"
+			
+							question "En Ruby los bloques son objetos que contienen codigo",
+							wrong => "Cierto",
+							right => "Falso"
+			end
+		end
+	
+		context "Quiz" do
+		
+			it "~Debe tener un atributo del tipo examen" do
+				expect(@q).to respond_to :exam
+				expect(@q.exam.instance_of?Exam).to eq(true)
+			end
+			
+			it "~Debe tener un nombre para el examen" do
+				expect(@q).to respond_to :name
+				expect(@q.name)=="Cuestionario LPP 05/12/2014"
+			end 
+			
+			it "~Debe tener una variable de clase que usaremos de contador" do
+				expect(@q).to respond_to :counter
+				expect(@q.counter)==2
+			end 
+			
+			it "~Debe tener un método right" do
+				expect(@q).to respond_to :right
+			end 
+			
+			it "~Debe tener un método wrong" do
+				expect(@q).to respond_to :wrong
+			end 
+			
+			it "~Debe tener un método question" do
+				expect(@q).to respond_to :question
+			end 
+			
+			it "~Debe tener un método to_s" do
+				expect(@q).to respond_to :to_s
+			end 
+			
+			it "~Debe tener un método run" do
+				expect(@q).to respond_to :run
+			end 
+			
+			it "~El método right debe devolver un símbolo" do
+				expect(@q.right.instace_of?Symbol).to eq(true) 
+			end			
+			
+			it "~El método wrong debe devolver un array" do
+				expect(@q.wrong.instace_of?Array).to eq(true) 
+			end			
+			
+			it "~El método question debe leer preguntas" do
+				expect(@q.question("3+4=", @q.right => "7", @q.wrong => "1")).to be_instance_of(Exam)
+			end			
+					
+		end		
+	end
+end
